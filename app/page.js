@@ -1,11 +1,9 @@
 import JobList from '@/components/JobList';
-import AnimatedGradient from '@/components/AnimatedGradient';
 
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gray-900">
       {/* Animated background gradient */}
-      <AnimatedGradient />
 
       {/* Glass effect container */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 sm:py-32">
