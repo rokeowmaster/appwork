@@ -10,7 +10,10 @@ const ApplyButton = ({ job }) => {
     const message = `Hi, I'm interested in applying for the ${job.title} position at ${job.company}. Here are my details: [Your Name], [Your Contact Info], [Brief Introduction].`;
     const whatsappUrl = `https://wa.me/${job.contactNumber}?text=${encodeURIComponent(message)}`;
     
-    window.open(whatsappUrl, '_blank');
+    // Check if window is defined (client-side) before using it
+    if (typeof window !== 'undefined') {
+      window.open(whatsappUrl, '_blank');
+    }
     applyForJob(job.id);
   };
 
