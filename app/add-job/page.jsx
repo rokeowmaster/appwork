@@ -2,13 +2,17 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { db } from '@/lib/firebase';
+import { db,auth } from '@/lib/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { useJobs } from '@/context/JobsContext';
 import { useEffect } from 'react';
+import { useAuth } from '@/context/authContext';
 
 export default function AddJobPage() {
+  const { user, loading } = useAuth();
 
+  // Ensure user is authenticated before proceeding
+  if (loading) return <div> User Loading...</div>;
   const [formData, setFormData] = useState({
     title: '',
     company: '',
@@ -17,6 +21,7 @@ export default function AddJobPage() {
     location: '',
     salary: '',
     contactNumber: '',
+    postedBy: user.email || "Anonymous",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);

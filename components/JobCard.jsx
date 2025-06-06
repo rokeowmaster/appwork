@@ -24,6 +24,7 @@ const JobCard = ({ job, hideApplied = true }) => {
           <div>
             <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
             <p className="text-gray-600 mt-1">{job.company}</p>
+            
           </div>
 
           <div className="flex items-center space-x-2">
@@ -57,6 +58,7 @@ const JobCard = ({ job, hideApplied = true }) => {
           <div className="mt-4 pt-4 border-t border-gray-200">
             <h4 className="font-semibold text-gray-900">Description</h4>
             <p className="text-gray-600 mt-2">{job.description}</p>
+            <p className="text-gray-600 mt-1">Posted by: {job.postedBy}</p>
 
             {/* Only show ApplyButton if not already applied */}
             {!job.applied && (

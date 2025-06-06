@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { useAuth } from '@/context/authContext';
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { user } = useAuth(); // Assuming you have a context for auth state
 
   return (
     <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
@@ -37,6 +39,18 @@ const Navbar = () => {
               className={`${pathname === '/add-job' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-gray-900'} transition-colors text-sm md:text-base`}
             >
               Post a Job
+            </Link>
+            <Link 
+              href="/register" 
+              className="text-gray-600 hover:text-gray-900 transition-colors text-sm md:text-base"
+            >
+              Register
+            </Link>
+            <Link 
+              href={user ? '/profile' : '/login'} 
+              className="text-gray-600 hover:text-gray-900 transition-colors text-sm md:text-base"
+            >
+              {user ? 'Profile' : 'Login'}
             </Link>
           </div>
         </div>
